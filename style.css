@@ -1,0 +1,309 @@
+/* style.css */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0c0422;
+  color: #f0f4ff;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  padding: 48px 60px 36px;
+  border-bottom: 1px solid #111d3a;
+}
+
+.site-subtitle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.site-subtitle {
+  text-decoration: none;
+}
+
+.site-subtitle:hover {
+  opacity: 0.75;
+}
+
+.bluesky-link svg {
+  width: 16px;
+  height: 16px;
+  fill: #ffffff;
+  display: block;
+  transition: opacity 0.15s ease;
+}
+
+.bluesky-link:hover svg {
+  opacity: 0.75;
+}
+
+.site-tagline {
+  color: #8ba3d4;
+  font-size: 24px;
+  line-height: 1.6;
+  margin-top: 10px;
+  max-width: 520px;
+}
+
+.site-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 52px;
+  color: #ff4fa3;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.site-subtitle {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Section heading */
+.section-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  padding: 24px 60px 0;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+/* Main */
+main {
+  padding: 16px 60px 48px;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+/* Games grid */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+  .game-card {
+    display: block !important;
+  }
+}
+
+
+/* Game card */
+.game-card:hover {
+  outline: 2px solid #ff4fa3;
+}
+
+.game-card {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  background: #080e28;
+  border: 1px solid #111d3a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Card header: title / year / platform badge */
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 18px 0;
+}
+
+.game-title {
+  font-family: 'Pirata One', cursive;
+  font-size: 28px;
+  color: #f0f4ff;
+  line-height: 1.3;
+  text-decoration: none;
+  flex: 1;
+}
+
+.game-title:hover {
+  color: #ff4fa3;
+}
+
+.card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  gap: 2px;
+}
+
+.itch-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ff9ecd;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.itch-badge:hover {
+  opacity: 0.8;
+}
+
+.card-year {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #ff4fa3;
+}
+
+/* Description */
+.game-desc {
+  font-size: 16px;
+  color: #e4edff;
+  line-height: 1.6;
+  padding: 0 18px;
+}
+
+/* Capsule — main hero image, links to itch.io */
+.media-capsule {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.media-capsule img,
+.media-capsule canvas {
+  width: 100%;
+  display: block;
+}
+
+.media-capsule:hover canvas {
+  opacity: 0.85;
+}
+
+/* Thumbnail grid — 2 columns, up to 2 rows */
+.media-thumbs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  align-self: start;
+  padding-bottom: 16px;
+}
+
+.media-thumb-small {
+  aspect-ratio: 16 / 9;
+  background: #0d1535;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.media-thumb-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+}
+
+.media-thumb-small:hover img {
+  opacity: 1;
+}
+
+/* Play button overlay on video thumbnails */
+.media-thumb-small .thumb-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  background: #ff4fa3;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.media-thumb-small .thumb-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 12px solid white;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+  cursor: default;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: #f0f4ff;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.8;
+  line-height: 1;
+  padding: 4px 8px;
+  transition: opacity 0.15s ease;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+.lightbox-video {
+  width: min(85vw, 1080px);
+  aspect-ratio: 16 / 9;
+}
+
+.lightbox-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  border-radius: 4px;
+}
