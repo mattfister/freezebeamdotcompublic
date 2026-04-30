@@ -8,6 +8,12 @@ body {
   min-height: 100vh;
 }
 
+/* Sit above the particle canvas (z-index: 1) */
+header, main, .section-heading, .lightbox {
+  position: relative;
+  z-index: 2;
+}
+
 /* Header */
 header {
   padding: 48px 60px 36px;
