@@ -41,6 +41,18 @@ header {
   opacity: 0.75;
 }
 
+.itch-profile-link svg {
+  width: 18px;
+  height: 18px;
+  fill: #ffffff;
+  display: block;
+  transition: opacity 0.15s ease;
+}
+
+.itch-profile-link:hover svg {
+  opacity: 0.75;
+}
+
 .site-tagline {
   color: #8ba3d4;
   font-size: 24px;
@@ -105,10 +117,6 @@ main {
 
 
 /* Game card */
-.game-card:hover {
-  outline: 2px solid #ff4fa3;
-}
-
 .game-card {
   display: grid;
   grid-row: span 4;
@@ -117,6 +125,13 @@ main {
   border: 1px solid #111d3a;
   border-radius: 12px;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.6));
 }
 
 /* Card header: title / year / platform badge */

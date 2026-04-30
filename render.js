@@ -36,15 +36,20 @@ function initLightbox() {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 }
 
-function openLightbox(src) {
+let _lightboxOpener = null;
+
+function openLightbox(src, altText) {
   const lb = document.getElementById('lightbox');
   const img = document.getElementById('lightbox-img');
   const vid = document.getElementById('lightbox-video');
   vid.innerHTML = '';
   vid.style.display = 'none';
   img.src = src;
+  img.alt = altText || '';
   img.style.display = 'block';
+  _lightboxOpener = document.activeElement;
   lb.classList.add('open');
+  document.getElementById('lightbox-close').focus();
 }
 
 function openLightboxVideo(id) {
@@ -61,14 +66,17 @@ function openLightboxVideo(id) {
   vid.innerHTML = '';
   vid.appendChild(iframe);
   vid.style.display = 'block';
+  _lightboxOpener = document.activeElement;
   lb.classList.add('open');
+  document.getElementById('lightbox-close').focus();
 }
 
 function closeLightbox() {
   const lb = document.getElementById('lightbox');
   const vid = document.getElementById('lightbox-video');
   lb.classList.remove('open');
-  vid.innerHTML = ''; // stop video playback
+  vid.innerHTML = '';
+  if (_lightboxOpener) { _lightboxOpener.focus(); _lightboxOpener = null; }
 }
 
 // --- Card building ---
@@ -110,7 +118,7 @@ function buildCard(game) {
 
   // Capsule — row 2
   if (game.capsule) {
-    card.appendChild(buildCapsule(game));
+    card.appendChild(buildCapsule(game, card));
   }
 
   // Description — row 3
@@ -131,10 +139,15 @@ function buildCard(game) {
     card.appendChild(thumbsRow);
   }
 
+  card.addEventListener('click', e => {
+    if (e.target.closest('a, .media-thumb-small, .media-capsule')) return;
+    window.open(game.url, '_blank', 'noopener,noreferrer');
+  });
+
   return card;
 }
 
-function buildCapsule(game) {
+function buildCapsule(game, hoverTarget) {
   const link = document.createElement('a');
   link.className = 'media-capsule';
   link.href = game.url;
@@ -159,12 +172,12 @@ function buildCapsule(game) {
   link.appendChild(canvas);
   link.appendChild(img);
 
-  link.addEventListener('mouseenter', () => {
+  (hoverTarget || link).addEventListener('mouseenter', () => {
     canvas.style.display = 'none';
     img.style.display = 'block';
   });
 
-  link.addEventListener('mouseleave', () => {
+  (hoverTarget || link).addEventListener('mouseleave', () => {
     img.style.display = 'none';
     canvas.style.display = 'block';
     // Reset GIF so next hover replays from frame 1
@@ -179,23 +192,31 @@ function buildCapsule(game) {
 function buildSmallThumb(item) {
   const div = document.createElement('div');
   div.className = 'media-thumb-small';
+  div.setAttribute('role', 'button');
+  div.setAttribute('tabindex', '0');
 
   const img = document.createElement('img');
-  img.alt = '';
   img.loading = 'lazy';
-  img.src = item.type === 'youtube'
-    ? `https://img.youtube.com/vi/${item.id}/mqdefault.jpg`
-    : item.src;
-
-  div.appendChild(img);
 
   if (item.type === 'youtube') {
+    img.src = `https://img.youtube.com/vi/${item.id}/mqdefault.jpg`;
+    img.alt = item.label ? `${item.label} (video)` : 'Watch video';
     const playBtn = document.createElement('div');
     playBtn.className = 'thumb-play';
+    div.appendChild(img);
     div.appendChild(playBtn);
-    div.addEventListener('click', () => openLightboxVideo(item.id));
+    div.setAttribute('aria-label', img.alt);
+    const open = () => openLightboxVideo(item.id);
+    div.addEventListener('click', open);
+    div.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
   } else {
-    div.addEventListener('click', () => openLightbox(item.src));
+    img.src = item.src;
+    img.alt = item.label || '';
+    div.appendChild(img);
+    if (item.label) div.setAttribute('aria-label', `View image: ${item.label}`);
+    const open = () => openLightbox(item.src, item.label || '');
+    div.addEventListener('click', open);
+    div.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
   }
 
   return div;
