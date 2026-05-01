@@ -20,7 +20,7 @@ header {
   border-bottom: 1px solid #111d3a;
 }
 
-header > * {
+.header-inner {
   max-width: 1100px;
   margin-inline: auto;
 }
