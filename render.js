@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initParticles();
   initLightbox();
+  initTabs();
 
   const byYear = {};
   GAMES.forEach(game => {
@@ -25,6 +26,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   main.appendChild(grid);
 });
+
+// --- Tabs ---
+
+function initTabs() {
+  const initial = new URLSearchParams(location.search).get('tab') || 'games';
+  switchTab(initial);
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchTab(btn.dataset.tab);
+      const url = new URL(location.href);
+      if (btn.dataset.tab === 'games') {
+        url.searchParams.delete('tab');
+      } else {
+        url.searchParams.set('tab', btn.dataset.tab);
+      }
+      history.pushState(null, '', url);
+    });
+  });
+
+  window.addEventListener('popstate', () => {
+    const tab = new URLSearchParams(location.search).get('tab') || 'games';
+    switchTab(tab);
+  });
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    const active = btn.dataset.tab === name;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-selected', String(active));
+  });
+  document.getElementById('games').hidden = name !== 'games';
+  document.getElementById('about').hidden = name !== 'about';
+}
 
 // --- Particles ---
 

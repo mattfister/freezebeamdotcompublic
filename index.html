@@ -28,12 +28,35 @@
         </svg>
       </a>
     </div>
-    <div class="site-tagline">An indie game developer in Boston, MA, trying to make the perfect video game.</div>
+    <div class="site-tagline">An indie game developer in Boston, MA, trying to make the <b>perfect</b> video game.</div>
     </div>
   </header>
 
-  <h2 class="section-heading">Games</h2>
-  <main id="games"></main>
+  <nav class="tab-nav" role="tablist">
+    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="games" data-tab="games">Games</button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="about" data-tab="about">About</button>
+  </nav>
+  <main id="games" role="tabpanel"></main>
+  <section id="about" class="about-section" role="tabpanel" hidden>
+    <div class="about-content">
+      <p>Hi, I'm Matt Fister, an indie game developer in Boston, MA, trying to make the perfect video game.</p>
+      <p>I've been making games for a long time, but recently started releasing smaller games about once a quarter with <a href="https://tinymassgames.itch.io">Tiny Mass Games</a>.</p>
+      <h3>Contact</h3>
+      <ul>
+        <li><b>You & me:</b> we should do something together. <a href="mailto:freezebeamgames+inquiries@gmail.com">freezebeamgames+inquiries@gmail.com</a></li>
+        <li>Bluesky: <a href="https://bsky.app/profile/freezebeam.bsky.social" target="_blank" rel="noopener noreferrer">@freezebeam.bsky.social</a></li>
+        <li>Itch.io: <a href="https://freezebeam.itch.io" target="_blank" rel="noopener noreferrer">freezebeam</a></li>
+      </ul>
+      <h3>Tools</h3>
+      <p>All of my recent games are made in Godot. Art is made in Asesprite and Krita. I sometimes flail around in Blender. A lot of the games have sountracks by <a href="https://bsky.app/profile/patthewmrindiville.bsky.social">Matt Prindiville</a>.</p>
+      <h3>What I Love In Games</h3>
+      <ul>
+        <li><b>Player creativity encouraged:</b> I like games where players get to express themselves creatively, through gameplay.</li>
+        <li><b>Strategic choices</b>: When games force you to make tough decisions.</li>
+        <li><b>Strong aesthetics:</b> Games with a bold style are my favorites.</li>
+      </ul>      
+    </div>
+  </section>
 
 
 

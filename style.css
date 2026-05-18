@@ -9,7 +9,7 @@ body {
 }
 
 /* Sit above the particle canvas (z-index: 1) */
-header, main, .section-heading, .lightbox {
+header, main, .section-heading, .tab-nav, .about-section, .lightbox {
   position: relative;
   z-index: 2;
 }
@@ -88,6 +88,78 @@ header {
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+/* Tab nav */
+.tab-nav {
+  display: flex;
+  gap: 32px;
+  padding: 24px 60px 0;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2a3a5c;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+  line-height: 1;
+}
+
+.tab-btn.active {
+  color: #ffffff;
+}
+
+.tab-btn:hover:not(.active) {
+  color: #8ba3d4;
+}
+
+/* About section */
+.about-section {
+  padding: 32px 60px 48px;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.about-content p,
+.about-content ul {
+  font-size: 18px;
+  color: #e4edff;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-content h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ff4fa3;
+  margin-bottom: 10px;
+  margin-top: 36px;
+}
+
+.about-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-content ul li {
+  margin-bottom: 6px;
+}
+
+.about-content a {
+  color: #8ba3d4;
+  text-decoration: none;
+}
+
+.about-content a:hover {
+  color: #ffffff;
 }
 
 /* Section heading */
