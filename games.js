@@ -79,7 +79,7 @@ const GAMES = [
     platform: "itch",
     url: "https://freezebeam.itch.io/escape-wizard",
     description: "Escape Pandemonium alone or with a friend in this retro-hard, cursed arcade game inspired by survivors games and classic shmups.",
-    capsule: "images/escape-wizard/capsule.png",
+    capsule: "images/escape-wizard/escape_wizard_itch_cover_gif.gif",
     media: [
       { type: "youtube", id: "9V4q6p_DQ_4" },
       { type: "image", src: "images/escape-wizard/screenshot1.png" },
