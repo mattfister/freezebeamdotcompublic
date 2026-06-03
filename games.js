@@ -1,13 +1,17 @@
 // games.js
 // To add a game: append one object to this array, commit, and push.
 // Images go in images/<slug>/ — reference them as { type: "image", src: "images/<slug>/filename.gif" }
-// platform: "itch" | "steam"
+// platforms: array of { name: "itch" | "steam", url: "..." }
+// url: primary link used for capsule/title/card click (typically platforms[0].url)
+// yearDisplay: optional string override shown in UI (e.g. "2025–?"); year stays numeric for sorting
 const GAMES = [
   {
     title: "Pandemonium Gems: Refaceted",
     year: 2026,
-    platform: "itch",
     url: "https://freezebeam.itch.io/pandemonium-gems-refaceted",
+    platforms: [
+      { name: "itch", url: "https://freezebeam.itch.io/pandemonium-gems-refaceted" },
+    ],
     description: "The gem melting, tile placing, chain reaction puzzler is back! Now with online high scores and a daily mode.",
     capsule: "images/pandemonium-gems-refacted/capsule.gif",
     media: [
@@ -20,8 +24,10 @@ const GAMES = [
   {
     title: "Interdimensional Jet Ski Simulator 2026",
     year: 2026,
-    platform: "itch",
     url: "https://freezebeam.itch.io/interdimensional-jet-ski-simulator-2026",
+    platforms: [
+      { name: "itch", url: "https://freezebeam.itch.io/interdimensional-jet-ski-simulator-2026" },
+    ],
     description: "Drive your Jet Ski through infinite procedurally-generated worlds, collecting upgrades and avoiding the evil stare of Gazorax The Unblinking.",
     capsule: "images/jet-ski-sim/capsule.png",
     media: [
@@ -34,8 +40,10 @@ const GAMES = [
   {
     title: "Unseelie Chorus",
     year: 2025,
-    platform: "itch",
     url: "https://freezebeam.itch.io/unseelie-chorus",
+    platforms: [
+      { name: "itch", url: "https://freezebeam.itch.io/unseelie-chorus" },
+    ],
     description: "An experimental shmup where the procedurally generated music and enemy attack patterns are connected.",
     capsule: "images/unseelie-chorus/capsule.gif",
     media: [
@@ -48,8 +56,11 @@ const GAMES = [
   {
     title: "Towerbound",
     year: 2025,
-    platform: "itch",
+    yearDisplay: "2025–?",
     url: "https://freezebeam.itch.io/towerbound",
+    platforms: [
+      { name: "itch", url: "https://freezebeam.itch.io/towerbound" },
+    ],
     description: "Build your wizard tower during the day and defend it at night in this coffee-break, tower building, tower defending roguelike.",
     capsule: "images/towerbound/capsule.gif",
     media: [
@@ -62,8 +73,10 @@ const GAMES = [
   {
     title: "Pandemonium Gems",
     year: 2025,
-    platform: "itch",
     url: "https://freezebeam.itch.io/pandemonium-gems",
+    platforms: [
+      { name: "itch", url: "https://freezebeam.itch.io/pandemonium-gems" },
+    ],
     description: "An experiment 16x9 (pixels!) tile placing puzzle game.",
     capsule: "images/pandemonium-gems/capsule.jpg",
     media: [
@@ -76,22 +89,29 @@ const GAMES = [
   {
     title: "Escape Wizard",
     year: 2024,
-    platform: "itch",
+    yearDisplay: "2024–2026",
     url: "https://freezebeam.itch.io/escape-wizard",
+    platforms: [
+      { name: "itch", url: "https://freezebeam.itch.io/escape-wizard" },
+    ],
     description: "Escape Pandemonium alone or with a friend in this retro-hard, cursed arcade game inspired by survivors games and classic shmups.",
     capsule: "images/escape-wizard/escape_wizard_itch_cover_gif.gif",
     media: [
       { type: "youtube", id: "9V4q6p_DQ_4" },
-      { type: "image", src: "images/escape-wizard/screenshot1.png" },
-      { type: "image", src: "images/escape-wizard/screenshot2.png" },
+      { type: "image", src: "images/escape-wizard/screenshot1.gif" },
+      { type: "image", src: "images/escape-wizard/screenshot2.gif" },
       { type: "image", src: "images/escape-wizard/screenshot3.png" },
     ]
   },
   {
     title: "Evoplasm",
     year: 2024,
-    platform: "steam",
+    yearDisplay: "2024–?",
     url: "https://store.steampowered.com/app/3010490/Evoplasm/",
+    platforms: [
+      { name: "steam", url: "https://store.steampowered.com/app/3010490/Evoplasm/" },
+      { name: "itch", url: "https://freezebeam.itch.io/evoplasm" },
+    ],
     description: "Evolve and fight in this creature building Roguelike.",
     capsule: "images/evoplasm/capsule.png",
     media: [

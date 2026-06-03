@@ -198,20 +198,25 @@ function buildCard(game) {
   titleLink.rel = 'noopener noreferrer';
   titleLink.textContent = game.title;
 
-  const badge = document.createElement('a');
-  badge.className = 'itch-badge';
-  badge.href = game.url;
-  badge.target = '_blank';
-  badge.rel = 'noopener noreferrer';
-  badge.textContent = game.platform === 'steam' ? 'Steam ↗' : 'itch.io ↗';
+  const badgesRow = document.createElement('div');
+  badgesRow.className = 'platform-badges';
+  (game.platforms || [{ name: game.platform, url: game.url }]).forEach(p => {
+    const badge = document.createElement('a');
+    badge.className = 'itch-badge';
+    badge.href = p.url;
+    badge.target = '_blank';
+    badge.rel = 'noopener noreferrer';
+    badge.textContent = p.name === 'steam' ? 'Steam ↗' : 'itch.io ↗';
+    badgesRow.appendChild(badge);
+  });
 
   const yearTag = document.createElement('span');
   yearTag.className = 'card-year';
-  yearTag.textContent = game.year;
+  yearTag.textContent = game.yearDisplay || game.year;
 
   const meta = document.createElement('div');
   meta.className = 'card-meta';
-  meta.appendChild(badge);
+  meta.appendChild(badgesRow);
   meta.appendChild(yearTag);
 
   header.appendChild(titleLink);

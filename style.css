@@ -247,6 +247,14 @@ main {
   gap: 2px;
 }
 
+.platform-badges {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .itch-badge {
   font-size: 10px;
   font-weight: 600;
