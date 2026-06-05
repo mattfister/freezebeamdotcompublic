@@ -6,6 +6,22 @@
 // yearDisplay: optional string override shown in UI (e.g. "2025–?"); year stays numeric for sorting
 const GAMES = [
   {
+    title: "Realmfold",
+    year: 2026,
+    url: "https://freezebeam.itch.io/realmfold",
+    platforms: [
+      { name: "itch", url: "https://freezebeam.itch.io/realmfold" },
+    ],
+    description: "You've cast the Realmfold! Expand your leyline network and build an infinite wizard realm, but only if you seek arcane geometric perfection.",
+    capsule: "images/realmfold/capsule.gif",
+    media: [
+      { type: "youtube", id: "GcExkB-Dack" },
+      { type: "image", src: "images/realmfold/screenshot2.gif" },
+      { type: "image", src: "images/realmfold/screenshot3.gif" },
+      { type: "image", src: "images/realmfold/screenshot4.gif" },
+    ]
+  },
+  {
     title: "Pandemonium Gems: Refaceted",
     year: 2026,
     url: "https://freezebeam.itch.io/pandemonium-gems-refaceted",
